@@ -89,16 +89,19 @@
     footer a:hover {text-decoration: underline;}
 
     @media (max-width: 768px) {
-      header {flex-direction: column; padding: 10px 20px;}
-      nav {width: 100%; justify-content: center;}
-      nav a {display: inline-block; margin: 5px;}
+      header {flex-direction: column; padding: 10px 20px; min-height: unset;}
+      nav {width: 100%; justify-content: center; flex-wrap: wrap; gap: 6px;}
+      /* reducir tamaño y espaciado de links en móviles para que quepan */
+      nav a {display: inline-block; margin: 4px; font-size: 0.9rem; padding: 6px 8px;}
       .nav-logo {height: 40px; margin-left: 0; margin-top: 8px;}
       .hero h2 {font-size: 2em;}
       .summary-cards {justify-content: space-between;}
       .card {min-width: 120px; flex: 1 1 45%;}
       .amenities-grid {grid-template-columns: repeat(1, 1fr);}
-      /* Ajustes responsive adicionales */
-      .gallery img {height: 160px;}
+  /* Ajustes responsive adicionales */
+  /* En pantallas <=768px convertir miniaturas en cuadrados usando aspect-ratio */
+  .gallery a {aspect-ratio: 1 / 1;}
+  .gallery img {height: 100%; width: 100%; object-fit: cover;}
       .contact-grid {grid-template-columns: 1fr;}
       .nearby-grid {grid-template-columns: 1fr;}
       .place-card img {height: 200px;}
@@ -109,13 +112,18 @@
       .hero {padding: 100px 12px 40px;}
       .hero h2 {font-size: 1.6rem;}
       section {padding: 50px 12px;}
-      .gallery img {height: 140px;}
+  /* En pantallas muy pequeñas mantener miniaturas cuadradas y proporcionales */
+  .gallery a {aspect-ratio: 1 / 1;}
+  .gallery img {height: 100%; width: 100%; object-fit: cover;}
       .place-card img {height: 150px;}
       .place-card h4 {font-size: 1rem; padding: 10px 12px 0;}
       .place-card p {font-size: 0.9rem; padding: 6px 12px 12px;}
       .card {min-width: unset; flex: 1 1 100%;}
       .summary-cards {gap: 10px;}
-      .nav {gap: 8px;}
+      .nav {gap: 6px;}
+      /* ajustes adicionales para navegación en pantallas muy pequeñas */
+      nav a {font-size: 0.82rem; margin: 3px; padding: 5px 6px;}
+      .lang-toggle {padding: 4px 7px; font-size: 0.8rem;}
     }
     /* Sección: Lugares cercanos */
     .nearby {padding: 60px 20px;}
