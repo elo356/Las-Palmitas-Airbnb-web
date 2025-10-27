@@ -25,6 +25,7 @@
   /* Logo dentro del navbar: agrandado y alineado a la derecha */
   nav {display: flex; align-items: center; gap: 12px;}
   .nav-logo {height: 64px; width: auto; object-fit: contain; margin-left: auto;}
+  .header-mini-logo {display: none;}
   header h1 {font-size: 1.5em; font-weight: 700; display: flex; align-items: center; gap: 12px;}
     nav a {color: white; margin: 0 10px; text-decoration: none; font-weight: 500; transition: 0.3s;}
     nav a:hover {opacity: 0.8;}
@@ -45,6 +46,8 @@
 
   /* Detalles: tarjetas resumen + cuadrícula de comodidades */
   .details {max-width: 1100px; margin: 0 auto; display: grid; gap: 22px;}
+  /* Logo que se mostrará sobre la sección de Detalles */
+  .section-logo {height: 400px; display: block; margin: 0 auto 18px; object-fit: contain;}
   .summary-cards {display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;}
   .card {background: #fff; padding: 14px 18px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.06); min-width: 150px; text-align: center;}
   .card-title {font-size: 0.85rem; color: #666;}
@@ -89,15 +92,22 @@
     footer a:hover {text-decoration: underline;}
 
     @media (max-width: 768px) {
-      header {flex-direction: column; padding: 10px 20px; min-height: unset;}
-      nav {width: 100%; justify-content: center; flex-wrap: wrap; gap: 6px;}
+      header {flex-direction: row; padding: 10px 16px; min-height: unset; align-items: center;}
+      /* Make gallery thumbnails slightly smaller on mobile by reducing the grid min size */
+      .gallery {grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px;}
+      nav {width: auto; justify-content: flex-end; flex-wrap: nowrap; gap: 6px;}
       /* reducir tamaño y espaciado de links en móviles para que quepan */
       nav a {display: inline-block; margin: 4px; font-size: 0.9rem; padding: 6px 8px;}
-      .nav-logo {height: 40px; margin-left: 0; margin-top: 8px;}
+      .nav-logo {height: 40px; margin-left: 0; margin-top: 0;}
       .hero h2 {font-size: 2em;}
       .summary-cards {justify-content: space-between;}
       .card {min-width: 120px; flex: 1 1 45%;}
-      .amenities-grid {grid-template-columns: repeat(1, 1fr);}
+      .amenities-grid {grid-template-columns: repeat(1, 1fr);} 
+      /* header compact mobile: show mini logo + title and hide nav links (keep lang button) */
+      .header-mini-logo {display: block; height: 40px; margin-right: 10px;}
+      header h1 {font-size: 1.05rem; margin: 0;}
+      /* hide nav links on mobile to keep header compact */
+      nav a {display: none;}
   /* Ajustes responsive adicionales */
   /* En pantallas <=768px convertir miniaturas en cuadrados usando aspect-ratio */
   .gallery a {aspect-ratio: 1 / 1;}
@@ -112,10 +122,11 @@
       .hero {padding: 100px 12px 40px;}
       .hero h2 {font-size: 1.6rem;}
       section {padding: 50px 12px;}
-  /* En pantallas muy pequeñas mantener miniaturas cuadradas y proporcionales */
+  /* En pantallas muy pequeñas mantener miniaturas cuadradas y hacerlas un poco más pequeñas */
+  .gallery {grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px;}
   .gallery a {aspect-ratio: 1 / 1;}
   .gallery img {height: 100%; width: 100%; object-fit: cover;}
-      .place-card img {height: 150px;}
+      .place-card img {height: 120px;}
       .place-card h4 {font-size: 1rem; padding: 10px 12px 0;}
       .place-card p {font-size: 0.9rem; padding: 6px 12px 12px;}
       .card {min-width: unset; flex: 1 1 100%;}
@@ -124,6 +135,7 @@
       /* ajustes adicionales para navegación en pantallas muy pequeñas */
       nav a {font-size: 0.82rem; margin: 3px; padding: 5px 6px;}
       .lang-toggle {padding: 4px 7px; font-size: 0.8rem;}
+      .section-logo {height: 56px; margin-bottom: 12px;}
     }
     /* Sección: Lugares cercanos */
     .nearby {padding: 60px 20px;}
@@ -138,9 +150,9 @@
 </head>
 <body>
   <header>
-    <h1>Las Palmitas</h1>
+    <img src="Images/logo.png" alt="Logo Las Palmitas" class="header-mini-logo" />
+    <h1>Las Palmitas Airbnb</h1>
     <nav>
-      <img src="Images/logo.jpg" alt="Logo Las Palmitas" class="nav-logo" />
       <button id="langToggle" class="lang-toggle" aria-label="Cambiar idioma">EN</button>
       <a href="#inicio" data-i18n-key="nav.home">Inicio</a>
       <a href="#detalles" data-i18n-key="nav.details">Detalles</a>
@@ -158,6 +170,7 @@
 
 
   <section id="detalles">
+    <img src="Images/logo.png" alt="Logo Las Palmitas" class="section-logo" />
     <h2 class="section-title" data-i18n-key="section.details.title">Detalles del Alojamiento</h2>
     <div class="details">
       <div class="summary-cards">
@@ -248,7 +261,7 @@
 
       <article class="place-card">
         <a href="Images/in14.jpg" target="_blank" rel="noopener"><img src="Images/lugares/ranchofgrande.jpg" alt="Bosque de Guajataca" loading="lazy"></a>
-        <h4 data-i18n-key="place.4.title">Bosque de Guajataca</h4>
+        <h4 data-i18n-key="place.4.title">Rancho Grande Bar & Seafood</h4>
         <p data-i18n-key="place.4.desc">Zona natural cercana para caminatas y observar flora y fauna local.</p>
       </article>
     </div>
@@ -313,7 +326,7 @@
   'place.1.title':'Playa de Añasco','place.1.desc':'Playa tranquila a pocos minutos, ideal para familias y disfrutar el atardecer.',
   'place.2.title':'Don Frappe','place.2.desc':'El mejor ambiente familiar con frappés irresistibles, gelatos cremosos, paletas refrescantes y una gastronomía deliciosa para disfrutar y crear recuerdos inolvidables juntos.',
   'place.3.title':'Plaza de Añasco','place.3.desc':'Pequeña plaza central con restaurantes y tiendas locales para pasear y comer.',
-  'place.4.title':'Bosque de Guajataca','place.4.desc':'Zona natural cercana para caminatas y observar flora y fauna local.',
+  'place.4.title':'Rancho Grande Bar & Seafood','place.4.desc':'Zona natural cercana para caminatas y observar flora y fauna local.',
   'contact.ask':'¿Tienes preguntas?','contact.phoneLabel':'Teléfono:','contact.emailLabel':'Email:','contact.info':'Puedes enviarnos un mensaje directamente desde este formulario. Respondemos normalmente dentro de las 24 horas. También puedes contactar por teléfono si es urgente.',
   'form.label.name':'Nombre','form.label.phone':'Teléfono','form.label.email':'Email','form.label.message':'Mensaje','form.success':'Mensaje enviado. Gracias — te responderemos pronto.','form.submit':'Enviar mensaje',
   'detail.extra':'La casa ofrece todo lo necesario para una estancia cómoda y familiar. Si necesitas algo extra antes o durante tu llegada, Carlos estará encantado de ayudarte.',
@@ -333,7 +346,7 @@
   'place.1.title':'Añasco Beach','place.1.desc':'A quiet beach just minutes away, great for families and sunset walks.',
   'place.2.title':'Don Frappe','place.2.desc':'A family-friendly spot serving irresistible frappés, creamy gelato, refreshing popsicles and delicious local treats — perfect for creating memorable moments together.',
   'place.3.title':'Añasco Plaza','place.3.desc':'Small central plaza with local restaurants and shops for strolling and dining.',
-  'place.4.title':'Guajataca Forest','place.4.desc':'A nearby natural area ideal for hikes and wildlife watching.',
+  'place.4.title':'Rancho Grande Bar & Seafood','place.4.desc':'A nearby natural area ideal for hikes and wildlife watching.',
   'form.label.name':'Name','form.label.phone':'Phone','form.label.email':'Email','form.label.message':'Message','form.success':'Message sent. Thanks — we\'ll get back to you soon.','form.submit':'Send message',
   'detail.extra':'The house provides everything you need for a comfortable, family-friendly stay. If you need anything before or during your arrival, Carlos will be happy to help.',
       'footer.view':'View on Airbnb'
