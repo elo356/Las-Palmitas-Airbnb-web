@@ -121,8 +121,8 @@
       .place-card p {font-size: 0.95rem;}
     }
     @media (max-width: 420px) {
-  /* Make the hero image fully visible (no cropping) on very small screens and nudge it downward */
-  .hero {padding: 60px 12px 20px; background-size: contain; background-position: center 40%; background-repeat: no-repeat; min-height: 60vh;}
+  /* Restore hero behavior on very small screens to match desktop: cover and centered at top */
+  .hero {padding: 60px 12px 20px; background-size: cover; background-position: center top; background-repeat: no-repeat; min-height: 60vh;}
       .hero h2 {font-size: 1.6rem;}
       section {padding: 50px 12px;}
   /* En pantallas muy pequeñas mantener miniaturas cuadradas y hacerlas un poco más pequeñas */
