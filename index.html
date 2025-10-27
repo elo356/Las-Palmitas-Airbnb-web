@@ -30,7 +30,8 @@
     nav a {color: white; margin: 0 10px; text-decoration: none; font-weight: 500; transition: 0.3s;}
     nav a:hover {opacity: 0.8;}
 
-  .hero {min-height: calc(100vh - 80px); background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('Images/hose-front.jpg') center/cover no-repeat; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; padding: 120px 20px 60px;}
+  /* Desktop/tablet: keep original cover behavior (image fills area) */
+  .hero {min-height: calc(100vh - 80px); background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('Images/hose-front.jpg'); background-position: center top; background-size: cover; background-repeat: no-repeat; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; padding: 120px 20px 60px;}
     .hero h2 {font-size: 2.8em; text-shadow: 0 2px 5px rgba(0,0,0,0.4);}
     .hero p {margin: 15px 0 25px; max-width: 600px; text-shadow: 0 1px 4px rgba(0,0,0,0.5);}
     .btn {background: var(--quenepa); color: white; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 500; transition: 0.3s;}
@@ -120,7 +121,8 @@
       .place-card p {font-size: 0.95rem;}
     }
     @media (max-width: 420px) {
-      .hero {padding: 100px 12px 40px;}
+  /* Make the hero image fully visible (no cropping) on very small screens and nudge it downward */
+  .hero {padding: 60px 12px 20px; background-size: contain; background-position: center 40%; background-repeat: no-repeat; min-height: 60vh;}
       .hero h2 {font-size: 1.6rem;}
       section {padding: 50px 12px;}
   /* En pantallas muy pequeñas mantener miniaturas cuadradas y hacerlas un poco más pequeñas */
@@ -284,8 +286,8 @@
         <div class="contact-card">
           <h4 data-i18n-key="contact.ask">¿Tienes preguntas?</h4>
           <p data-i18n-key="contact.info">Puedes enviarnos un mensaje directamente desde este formulario. Respondemos normalmente dentro de las 24 horas. También puedes contactar por teléfono si es urgente.</p>
-          <p><strong data-i18n-key="contact.phoneLabel">Teléfono:</strong> numerooo...</p>
-          <p><strong data-i18n-key="contact.emailLabel">Email:</strong> emaiiiil...</p>
+          <p><strong data-i18n-key="contact.phoneLabel">Teléfono:</strong> (787) 297-3580</p>
+          <p><strong data-i18n-key="contact.emailLabel">Email:</strong> laspalmitasairbnb@gmail.com</p>
         </div>
 
         <form id="contactForm" class="contact-form" action="#" method="post">
