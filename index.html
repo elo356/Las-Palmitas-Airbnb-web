@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Las Palmitas - Añasco, Puerto Rico</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
       /* Color principal actualizado al verde del logo */
@@ -89,9 +90,29 @@
   .form-success {display: none; padding: 12px; border-radius: 8px; background: #e6ffef; color: #0b6b3a;}
 
 
-    footer {background: var(--quenepa); color: white; padding: 25px; text-align: center; font-size: 0.9em;}
+  footer {background: var(--quenepa); color: white; padding: 18px 22px; text-align: left; font-size: 0.9em; position: relative;}
     footer a {color: white; margin: 0 8px; text-decoration: none;}
     footer a:hover {text-decoration: underline;}
+    /* footer inner: left text + right social icons */
+  .footer-inner {display: flex; align-items: center; justify-content: space-between; gap: 12px; max-width: 1100px; margin: 0 auto; padding-right: 20px;}
+  /* Social links: larger, visible circular icons aligned to the right on desktop
+    but switch to centered/static on small screens. Keep them accessible and
+    slightly smaller on mobile to avoid overlap. */
+  .social-links {display: flex; gap: 12px; align-items: center; justify-content: flex-end; position: absolute; right: 12px; top: 50%; transform: translateY(-50%);} 
+  .social-links a {display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; background: rgba(255,255,255,0.14); transition: transform 0.18s, box-shadow 0.18s; box-shadow: 0 6px 18px rgba(0,0,0,0.14);}    
+  .social-links svg {width: 28px; height: 28px; fill: white; stroke: none;}
+  /* Font Awesome icon sizing when using <i> */
+  .social-links i {font-size: 22px; color: white; line-height: 1;}
+  .social-links a:hover {transform: translateY(-4px) scale(1.04); box-shadow: 0 10px 26px rgba(0,0,0,0.18);} 
+  /* Brand backgrounds for quick recognition */
+  .social-links a.facebook {background: #1877f2;}
+  .social-links a.instagram {background: linear-gradient(45deg,#f58529 0%,#dd2a7b 50%,#8134af 100%);}
+  .social-links a.tiktok {background: #010101;}
+    /* mobile: stack footer content center */
+    @media (max-width: 420px) {
+      footer {text-align: center;}
+      .footer-inner {flex-direction: column; gap: 8px;}
+    }
 
     @media (max-width: 768px) {
       header {flex-direction: row; padding: 10px 16px; min-height: unset; align-items: center;}
@@ -119,6 +140,10 @@
       .place-card img {height: 200px;}
       .place-card h4 {font-size: 1.05rem;}
       .place-card p {font-size: 0.95rem;}
+      /* footer social links: make static and centered on tablet/mobile and reduce size */
+      .social-links {position: static; transform: none; margin-top: 8px; justify-content: center;}
+      .social-links a {width: 48px; height: 48px;}
+      .social-links i {font-size: 18px;}
     }
     @media (max-width: 420px) {
   /* Restore hero behavior on very small screens to match desktop: cover and centered at top */
@@ -140,6 +165,10 @@
       .lang-toggle {padding: 4px 7px; font-size: 0.8rem;}
   /* Aumentado para móviles para que el logo se vea mejor */
   .section-logo {height: 320px; margin-bottom: 12px;}
+  /* footer social links: make static and centered on small screens, reduce size */
+  .social-links {position: static; transform: none; margin-top: 8px; justify-content: center;}
+  .social-links a {width: 36px; height: 36px;}
+  .social-links i {font-size: 16px;}
     }
     /* Sección: Lugares cercanos */
     .nearby {padding: 60px 20px;}
@@ -317,7 +346,20 @@ Will definitely be coming back!!”</div>
   </section>
   
   <footer>
-    <p>© 2025 Las Palmitas – Todos los derechos reservados. | <a href="https://airbnb.com/h/laspalmitas" target="_blank" data-i18n-key="footer.view">Ver en Airbnb</a></p>
+    <div class="footer-inner">
+      <p>© 2025 Las Palmitas – Todos los derechos reservados. | <a href="https://airbnb.com/h/laspalmitas" target="_blank" data-i18n-key="footer.view">Ver en Airbnb</a></p>
+      <div class="social-links" aria-label="social links">
+        <a class="facebook" href="https://facebook.com/61554419900738" target="_blank" rel="noopener" aria-label="Facebook">
+          <i class="fab fa-facebook-f" aria-hidden="true"></i>
+        </a>
+        <a class="instagram" href="https://www.instagram.com/las_palmitas14?igsh=NXY2YWN2OHo3N2w4&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">
+          <i class="fab fa-instagram" aria-hidden="true"></i>
+        </a>
+        <a class="tiktok" href="https://www.tiktok.com/@las.palmitas.airb?_t=ZT-90sGkBe2VwV&_r=1" target="_blank" rel="noopener" aria-label="TikTok">
+          <i class="fab fa-tiktok" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
   </footer>
 <script>
 // Language switcher + contact form handling
@@ -340,7 +382,8 @@ Will definitely be coming back!!”</div>
   'contact.ask':'¿Tienes preguntas?','contact.phoneLabel':'Teléfono:','contact.emailLabel':'Email:','contact.info':'Puedes enviarnos un mensaje directamente desde este formulario. Respondemos normalmente dentro de las 24 horas. También puedes contactar por teléfono si es urgente.',
   'form.label.name':'Nombre','form.label.phone':'Teléfono','form.label.email':'Email','form.label.message':'Mensaje','form.success':'Mensaje enviado. Gracias — te responderemos pronto.','form.submit':'Enviar mensaje',
   'detail.extra':'La casa ofrece todo lo necesario para una estancia cómoda y familiar. Si necesitas algo extra antes o durante tu llegada, Carlos estará encantado de ayudarte.',
-      'footer.view':'Ver en Airbnb'
+      'footer.view':'Ver en Airbnb',
+      'footer.follow':'Síguenos:'
     },
   en: {
       'nav.home':'Home','nav.details':'Details','nav.gallery':'Gallery','nav.reviews':'Reviews','nav.location':'Location','nav.contact':'Contact',
@@ -359,7 +402,8 @@ Will definitely be coming back!!”</div>
   'place.4.title':'Rancho Grande Bar & Seafood','place.4.desc':'A nearby natural area ideal for hikes and wildlife watching.',
   'form.label.name':'Name','form.label.phone':'Phone','form.label.email':'Email','form.label.message':'Message','form.success':'Message sent. Thanks — we\'ll get back to you soon.','form.submit':'Send message',
   'detail.extra':'The house provides everything you need for a comfortable, family-friendly stay. If you need anything before or during your arrival, Carlos will be happy to help.',
-      'footer.view':'View on Airbnb'
+      'footer.view':'View on Airbnb',
+      'footer.follow':'Follow us:'
     }
   };
 
