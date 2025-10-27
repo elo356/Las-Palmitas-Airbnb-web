@@ -47,7 +47,8 @@
   /* Detalles: tarjetas resumen + cuadrícula de comodidades */
   .details {max-width: 1100px; margin: 0 auto; display: grid; gap: 22px;}
   /* Logo que se mostrará sobre la sección de Detalles */
-  .section-logo {height: 400px; display: block; margin: 0 auto 18px; object-fit: contain;}
+  /* tamaño base para desktop/tablet */
+  .section-logo {height: 140px; display: block; margin: 0 auto 18px; object-fit: contain;}
   .summary-cards {display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;}
   .card {background: #fff; padding: 14px 18px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.06); min-width: 150px; text-align: center;}
   .card-title {font-size: 0.85rem; color: #666;}
@@ -135,7 +136,8 @@
       /* ajustes adicionales para navegación en pantallas muy pequeñas */
       nav a {font-size: 0.82rem; margin: 3px; padding: 5px 6px;}
       .lang-toggle {padding: 4px 7px; font-size: 0.8rem;}
-      .section-logo {height: 56px; margin-bottom: 12px;}
+  /* Aumentado para móviles para que el logo se vea mejor */
+  .section-logo {height: 320px; margin-bottom: 12px;}
     }
     /* Sección: Lugares cercanos */
     .nearby {padding: 60px 20px;}
@@ -282,8 +284,8 @@
         <div class="contact-card">
           <h4 data-i18n-key="contact.ask">¿Tienes preguntas?</h4>
           <p data-i18n-key="contact.info">Puedes enviarnos un mensaje directamente desde este formulario. Respondemos normalmente dentro de las 24 horas. También puedes contactar por teléfono si es urgente.</p>
-          <p><strong data-i18n-key="contact.phoneLabel">Teléfono:</strong> +1 787-555-1234</p>
-          <p><strong data-i18n-key="contact.emailLabel">Email:</strong> anfitrion@laspalmitas.pr</p>
+          <p><strong data-i18n-key="contact.phoneLabel">Teléfono:</strong> numerooo...</p>
+          <p><strong data-i18n-key="contact.emailLabel">Email:</strong> emaiiiil...</p>
         </div>
 
         <form id="contactForm" class="contact-form" action="#" method="post">
